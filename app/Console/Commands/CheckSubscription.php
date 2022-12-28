@@ -27,8 +27,6 @@ class CheckSubscription extends Command
      */
     public function handle()
     {
-
-
         return Command::SUCCESS;
     }
 }
