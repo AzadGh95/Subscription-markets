@@ -25,15 +25,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Statistic extends Model
 {
-	protected $table = 'statistics';
+	public const APP_ID = 'devapp_id';
+
+    public const STATUS = 'status';
 
 	protected $casts = [
-		'app_id' => 'int',
+		'devapp_id' => 'int',
 		'status'=> PlatformEnum::class
 	];
 
 	protected $fillable = [
-		'app_id',
+		'devapp_id',
 		'status'
 	];
 

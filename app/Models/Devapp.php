@@ -26,7 +26,10 @@ class Devapp extends Model
 {
 	use  HasFactory;
 
-	protected $table = 'devapps';
+	public const ID = 'id';
+	public const NAME = 'name';
+	public const PLATFORM = 'platform';
+
 
 	protected $fillable = [
 		'name',

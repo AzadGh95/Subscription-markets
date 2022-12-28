@@ -28,7 +28,9 @@ class User extends Model
 {
 	use  HasFactory;
 
-	protected $table = 'users';
+	public const ID = 'id';
+	public const NAME = 'name';
+	public const EMAIL = 'email';
 
 	protected $dates = [
 		'email_verified_at'
