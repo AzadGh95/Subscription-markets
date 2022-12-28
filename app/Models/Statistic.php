@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use App\Enums\PlatformEnum;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,7 +28,8 @@ class Statistic extends Model
 	protected $table = 'statistics';
 
 	protected $casts = [
-		'app_id' => 'int'
+		'app_id' => 'int',
+		'status'=> PlatformEnum::class
 	];
 
 	protected $fillable = [

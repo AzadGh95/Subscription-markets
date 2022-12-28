@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\User;
-use Illuminate\Support\Str;
+use App\Models\Devapp;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<\App\Models\User>
+ * @extends Factory<\App\Models\Devapp>
  */
-final class UserFactory extends Factory
+final class DevappFactory extends Factory
 {
     /**
     * The name of the factory's corresponding model.
     *
     * @var string
     */
-    protected $model = User::class;
+    protected $model = Devapp::class;
 
     /**
     * Define the model's default state.
@@ -29,10 +28,7 @@ final class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'email' => $this->faker->safeEmail,
-            'email_verified_at' => $this->faker->dateTime(),
-            'password' => bcrypt($this->faker->password),
-            'remember_token' => Str::random(10),
+            'platform' => $this->faker->word,
         ];
     }
 }
