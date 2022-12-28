@@ -12,35 +12,36 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Statistic
- * 
+ *
  * @property int|null $id
- * @property int|null $app_id
+ * @property int|null $devapp_id
  * @property string|null $status
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
  * @property Devapp|null $devapp
- *
- * @package App\Models
  */
 class Statistic extends Model
 {
-	public const APP_ID = 'devapp_id';
+    public const APP_ID = 'devapp_id';
 
     public const STATUS = 'status';
 
-	protected $casts = [
-		'devapp_id' => 'int',
-		'status'=> PlatformEnum::class
-	];
+    public const COUNT = 'count';
 
-	protected $fillable = [
-		'devapp_id',
-		'status'
-	];
+    protected $casts = [
+        'devapp_id' => 'int',
+        'count' => 'int',
+        'status' => PlatformEnum::class,
+    ];
 
-	public function devapp()
-	{
-		return $this->belongsTo(Devapp::class, 'devapp_id');
-	}
+    protected $fillable = [
+        'devapp_id',
+        'status',
+        'count',
+    ];
+
+    public function devapp()
+    {
+        return $this->belongsTo(Devapp::class, 'devapp_id');
+    }
 }

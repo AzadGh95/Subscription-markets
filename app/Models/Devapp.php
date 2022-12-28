@@ -13,31 +13,31 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Devapp
- * 
+ *
  * @property int|null $id
  * @property string|null $name
  * @property string|null $platform
  * @property Carbon $created_at
  * @property Carbon $updated_at
- *
- * @package App\Models
  */
 class Devapp extends Model
 {
-	use  HasFactory;
+    use  HasFactory;
 
-	public const ID = 'id';
-	public const NAME = 'name';
-	public const PLATFORM = 'platform';
+    public const ID = 'id';
 
+    public const NAME = 'name';
 
-	protected $fillable = [
-		'name',
-		'platform'
-	];
-	/** @return HasMany  */
-	public function statistics(): HasMany
-	{
-		return $this->hasMany(Statistic::class);
-	}
+    public const PLATFORM = 'platform';
+
+    protected $fillable = [
+        'name',
+        'platform',
+    ];
+
+    /** @return HasMany  */
+    public function statistics(): HasMany
+    {
+        return $this->hasMany(Statistic::class);
+    }
 }

@@ -7,7 +7,6 @@ namespace Database\Factories;
 use App\Enums\SubscriptionStatusEnum;
 use App\Models\Statistic;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Symfony\Contracts\Service\Attribute\SubscribedService;
 
 /**
  * @extends Factory<\App\Models\Statistic>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('devapp_id')->constrained('devapps')->cascadeOnDelete();
             $table->string('status');
+            $table->integer('count')->nullable();
             $table->timestamps();
         });
     }

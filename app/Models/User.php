@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class User
- * 
+ *
  * @property int|null $id
  * @property string|null $name
  * @property string|null $email
@@ -21,31 +21,31 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $remember_token
  * @property Carbon $created_at
  * @property Carbon $updated_at
- *
- * @package App\Models
  */
 class User extends Model
 {
-	use  HasFactory;
+    use  HasFactory;
 
-	public const ID = 'id';
-	public const NAME = 'name';
-	public const EMAIL = 'email';
+    public const ID = 'id';
 
-	protected $dates = [
-		'email_verified_at'
-	];
+    public const NAME = 'name';
 
-	protected $hidden = [
-		'password',
-		'remember_token'
-	];
+    public const EMAIL = 'email';
 
-	protected $fillable = [
-		'name',
-		'email',
-		'email_verified_at',
-		'password',
-		'remember_token'
-	];
+    protected $dates = [
+        'email_verified_at',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $fillable = [
+        'name',
+        'email',
+        'email_verified_at',
+        'password',
+        'remember_token',
+    ];
 }
