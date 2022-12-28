@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('application_id')->constrained('applications')->cascadeOnDelete();
+            $table->string('status');
             $table->timestamps();
         });
     }
