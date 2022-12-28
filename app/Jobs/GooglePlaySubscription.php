@@ -2,9 +2,10 @@
 
 namespace App\Jobs;
 
+use App\Models\User;
+use App\Services\NotificationService;
 use App\Services\SubscriptionService;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -13,8 +14,11 @@ use Illuminate\Queue\SerializesModels;
 class GooglePlaySubscription implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
     private $url;
+
     private $devappId;
+
     /**
      * Create a new job instance.
      *
@@ -45,6 +49,9 @@ class GooglePlaySubscription implements ShouldQueue
                 $subscriptionStatus['status']
             );
             //TODO: status from ‘active’ to ‘expired’ must be reported to admin via email
+
+            $admin = User::find(1);
+            (new NotificationService($this->devappId, $admin))->Email();
         }
     }
 }
