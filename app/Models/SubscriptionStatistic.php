@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class SubscriptionStatistic
+ * Class Statistic
  * 
  * @property int|null $id
  * @property int|null $app_id
@@ -22,9 +22,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class SubscriptionStatistic extends Model
+class Statistic extends Model
 {
-	protected $table = 'subscription_statistics';
+	protected $table = 'statistics';
 
 	protected $casts = [
 		'app_id' => 'int'

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subscription_statistics', function (Blueprint $table) {
+        Schema::create('statistics', function (Blueprint $table) {
             $table->id();
             $table->foreignId('app_id')->constrained('devapps')->cascadeOnDelete();
             $table->string('status');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscription_statistics');
+        Schema::dropIfExists('statistics');
     }
 };
