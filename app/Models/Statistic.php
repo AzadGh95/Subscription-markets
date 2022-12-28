@@ -39,6 +39,6 @@ class Statistic extends Model
 
 	public function devapp()
 	{
-		return $this->belongsTo(Devapp::class, 'app_id');
+		return $this->belongsTo(Devapp::class, 'devapp_id');
 	}
 }

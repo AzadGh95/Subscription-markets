@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('app_id')->constrained('devapps')->cascadeOnDelete();
+            $table->foreignId('devapp_id')->constrained('devapps')->cascadeOnDelete();
             $table->string('status');
             $table->timestamps();
         });

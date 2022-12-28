@@ -7,7 +7,9 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Devapp
@@ -22,10 +24,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Devapp extends Model
 {
+	use  HasFactory;
+
 	protected $table = 'devapps';
 
 	protected $fillable = [
 		'name',
 		'platform'
 	];
+	/** @return HasMany  */
+	public function statistics(): HasMany
+	{
+		return $this->hasMany(Statistic::class);
+	}
 }
