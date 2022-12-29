@@ -35,14 +35,14 @@ class SubscriptionService
         );
     }
 
-    public function GuzzleApi(string $url, $devappId)
+    public function GuzzleApi(string $api, $devappId)
     {
         $client = new Client();
-        $response = $client->request('GET', $url);
+        $response = $client->request('GET', $api);
 
         return [
-            'status' => $response->getStatusCode(), // "200"
-            'body' => $response->getBody(),  // {"type":"User"...'
+            'status' => $response->getStatusCode(),
+            'body' => $response->getBody(),
         ];
     }
 
