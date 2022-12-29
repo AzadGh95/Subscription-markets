@@ -29,7 +29,9 @@ final class StatisticFactory extends Factory
     {
         return [
             'devapp_id' => \App\Models\Devapp::factory(),
-            'last_status' => $this->faker->randomElement([SubscriptionStatusEnum::ACCEPT, SubscriptionStatusEnum::PENDING, SubscriptionStatusEnum::REJECT]),
+            'last_status' => $this->faker->randomElement(
+                [SubscriptionStatusEnum::ACCEPT, SubscriptionStatusEnum::PENDING, SubscriptionStatusEnum::REJECT]
+            ),
             'expired_count' => $this->faker->numberBetween(0, 1000),
         ];
     }

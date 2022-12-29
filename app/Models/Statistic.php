@@ -8,6 +8,7 @@ namespace App\Models;
 
 use App\Enums\PlatformEnum;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -23,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Statistic extends Model
 {
+    use  HasFactory;
+
     public const APP_ID = 'devapp_id';
 
     public const LAST_STATUS = 'last_status';
@@ -32,7 +35,7 @@ class Statistic extends Model
     protected $casts = [
         'devapp_id' => 'int',
         'count' => 'int',
-        'last_status' => PlatformEnum::class,
+        //TODO: 'last_status' => PlatformEnum::class,
     ];
 
     protected $fillable = [
