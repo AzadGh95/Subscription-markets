@@ -2,8 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Models\User;
-use App\Services\NotificationService;
 use App\Services\SubscriptionService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -44,14 +42,10 @@ class GooglePlaySubscription implements ShouldQueue
             ->GuzzleApi($this->url, $this->devappId);
         if ($result['status'] == 200) {
             $subscriptionStatus = $result['body'];
-            $this->subscriptionService->InsertStatistic(
+            $this->subscriptionService->addStatistic(
                 $this->devappId,
                 $subscriptionStatus['status']
             );
-            //TODO: status from ‘active’ to ‘expired’ must be reported to admin via email
-
-            $admin = User::find(1);
-            (new NotificationService($this->devappId, $admin))->Email();
         }
     }
 }

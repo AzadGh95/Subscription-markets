@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('statistics', function (Blueprint $table) {
             $table->id();
             $table->foreignId('devapp_id')->constrained('devapps')->cascadeOnDelete();
-            $table->string('status');
-            $table->integer('count')->nullable();
+            $table->string('last_status');
+            $table->integer('expired_count')->default(0);
             $table->timestamps();
         });
     }
