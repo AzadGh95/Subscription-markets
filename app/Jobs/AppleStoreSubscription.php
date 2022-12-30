@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Services\StatisticService;
 use App\Services\SubscriptionService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -24,6 +25,7 @@ class AppleStoreSubscription implements ShouldQueue
      */
     public function __construct(
         protected SubscriptionService $subscriptionService,
+        protected StatisticService $statisticService,
         $api,
         $devappId
     ) {
@@ -42,7 +44,7 @@ class AppleStoreSubscription implements ShouldQueue
             ->GuzzleApi($this->api);
         if ($result['status'] == 200) {
             $subscriptionStatus = $result['body'];
-            $this->subscriptionService->addStatistic(
+            $this->statisticService->addStatistic(
                 $this->devappId,
                 $subscriptionStatus['subscription']
             );
