@@ -38,6 +38,7 @@ class CheckSubscription extends Command
             };
             (new SubscriptionService())->GuzzleApi($api, $item->id);
         }
+
         return Command::SUCCESS;
     }
 }
