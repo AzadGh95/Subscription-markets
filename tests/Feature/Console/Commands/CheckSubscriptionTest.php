@@ -9,6 +9,13 @@ class CheckSubscriptionTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->seed();
+    }
+
     /**
      * Test a console command.
      *
