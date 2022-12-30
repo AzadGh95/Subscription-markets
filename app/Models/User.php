@@ -32,20 +32,26 @@ class User extends Model
 
     public const EMAIL = 'email';
 
-    protected $dates = [
-        'email_verified_at',
-    ];
+    public const ACTIVE = 'active';
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
 
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeActive($query)
+    {
+        $query->where(self::ACTIVE, true);
+    }
+
+    protected $casts = [
+        'active' => 'boolean'
+    ];
+    
     protected $fillable = [
         'name',
         'email',
-        'email_verified_at',
-        'password',
-        'remember_token',
     ];
 }

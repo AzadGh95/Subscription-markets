@@ -35,7 +35,6 @@ class Statistic extends Model
     protected $casts = [
         'devapp_id' => 'int',
         'count' => 'int',
-        //TODO: 'last_status' => PlatformEnum::class,
     ];
 
     protected $fillable = [

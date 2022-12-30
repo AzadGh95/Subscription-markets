@@ -16,8 +16,9 @@ class StatisticService
             if ($status == 'expired') {
                 $count++;
                 if ($statistic->first()->last_status == 'active') {
-                    $admin = User::find(1);
-                    (new NotificationService($this->devappId, $admin))->Email();
+                    foreach (User::active()->get() as $admin) {
+                        (new NotificationService($this->devappId, $admin))->Email();
+                    }
                 }
             }
         }
