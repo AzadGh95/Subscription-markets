@@ -13,7 +13,7 @@ class AppleStoreSubscription implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $url;
+    private $api;
 
     private $devappId;
 
@@ -24,10 +24,10 @@ class AppleStoreSubscription implements ShouldQueue
      */
     public function __construct(
         protected SubscriptionService $subscriptionService,
-        $url,
+        $api,
         $devappId
     ) {
-        $this->url = $url;
+        $this->api = $api;
         $this->devappId = $devappId;
     }
 
@@ -39,7 +39,7 @@ class AppleStoreSubscription implements ShouldQueue
     public function handle()
     {
         $result = $this->subscriptionService
-            ->GuzzleApi($this->url, $this->devappId);
+            ->GuzzleApi($this->api);
         if ($result['status'] == 200) {
             $subscriptionStatus = $result['body'];
             $this->subscriptionService->addStatistic(

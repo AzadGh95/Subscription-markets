@@ -14,7 +14,7 @@ class CheckSubscription extends Command
      *
      * @var string
      */
-    protected $signature = 'check:subscriptions {googplay_api} {applestore_api}';
+    protected $signature = 'check:subscriptions';
 
     /**
      * The console command description.
@@ -33,10 +33,10 @@ class CheckSubscription extends Command
         $devapps = Devapp::all();
         foreach ($devapps as $item) {
             $api = match ($this->platform) {
-                PlatformEnum::ANDROID => $this->argument('googplay_api'),
-                PlatformEnum::IOS => $this->argument('applestore_api'),
+                PlatformEnum::ANDROID => route('mock.googleplay.show', ['app_id' => $item->id]),
+                PlatformEnum::IOS => route('mock.applestore.show', ['app_id' => $item->id]),
             };
-            (new SubscriptionService())->GuzzleApi($api, $item->id);
+            (new SubscriptionService())->Check($api, $item->platform, $item->id);
         }
 
         return Command::SUCCESS;

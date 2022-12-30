@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\PlatformEnum;
 use App\Jobs\AppleStoreSubscription;
 use App\Jobs\GooglePlaySubscription;
 use App\Models\Statistic;
@@ -35,7 +36,7 @@ class SubscriptionService
         );
     }
 
-    public function GuzzleApi(string $api, $devappId)
+    public function GuzzleApi(string $api)
     {
         $client = new Client();
         $response = $client->request('GET', $api);
@@ -46,14 +47,15 @@ class SubscriptionService
         ];
     }
 
-    public function Check($url, $type/*appstore - googleplay*/, $devappId)
+    public function Check($api, $platform, $devappId)
     {
-        $result = $this->GuzzleApi($url, $devappId);
+        $result = $this->GuzzleApi($api);
         if ($result['status'] == 200) {
-            match ($type) {
-                'googleplay' => GooglePlaySubscription::dispatch($url, $devappId)
+            match ($platform) {
+                PlatformEnum::ANDROID->value => GooglePlaySubscription::dispatch($api, $devappId)
                     ->delay(now()->addHour()),
-                'appstore' => AppleStoreSubscription::dispatch($url, $devappId)
+
+                PlatformEnum::IOS->value => AppleStoreSubscription::dispatch($api, $devappId)
                     ->delay(now()->addHours(2)),
             };
         }
