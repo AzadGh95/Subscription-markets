@@ -17,12 +17,12 @@ class CheckSubscriptionTest extends TestCase
      */
     public function test_command_subscription_active()
     {
-        $bodyGoogleplay = file_get_contents(base_path('tests/Feature/Helper/googleplaydata_active.json'));
+        $bodyGoogleplay = file_get_contents(base_path('tests/Feature/Helpers/googleplaydata_active.json'));
         $apiGoogleplay = Http::fake([
             'https//api.googleplay.co/*' => Http::response($bodyGoogleplay, 200),
         ]);
 
-        $bodyAppleStore = file_get_contents(base_path('tests/Feature/Helper/googleplaydata_active.json'));
+        $bodyAppleStore = file_get_contents(base_path('tests/Feature/Helpers/googleplaydata_active.json'));
         $apiAppleStore = Http::fake([
             'https//api.applestore.co/*' => Http::response($bodyAppleStore, 200),
         ]);
@@ -40,12 +40,12 @@ class CheckSubscriptionTest extends TestCase
      */
     public function test_command_subscription_expired()
     {
-        $bodyGoogleplay = file_get_contents(base_path('tests/Feature/Helper/googleplaydata_expired.json'));
+        $bodyGoogleplay = file_get_contents(base_path('tests/Feature/Helpers/googleplaydata_expired.json'));
         $apiGoogleplay = Http::fake([
             'https//api.googleplay.co/*' => Http::response($bodyGoogleplay, 200),
         ]);
 
-        $bodyAppleStore = file_get_contents(base_path('tests/Feature/Helper/googleplaydata_expired.json'));
+        $bodyAppleStore = file_get_contents(base_path('tests/Feature/Helpers/googleplaydata_expired.json'));
         $apiAppleStore = Http::fake([
             'https//api.applestore.co/*' => Http::response($bodyAppleStore, 200),
         ]);
@@ -63,12 +63,12 @@ class CheckSubscriptionTest extends TestCase
      */
     public function test_command_subscription_failed()
     {
-        $bodyGoogleplay = file_get_contents(base_path('tests/Feature/Helper/googleplaydata_active.json'));
+        $bodyGoogleplay = file_get_contents(base_path('tests/Feature/Helpers/googleplaydata_active.json'));
         $apiGoogleplay = Http::fake([
             'https//api.googleplay.co/*' => Http::response($bodyGoogleplay, 404),
         ]);
 
-        $bodyAppleStore = file_get_contents(base_path('tests/Feature/Helper/googleplaydata_active.json'));
+        $bodyAppleStore = file_get_contents(base_path('tests/Feature/Helpers/googleplaydata_active.json'));
         $apiAppleStore = Http::fake([
             'https//api.applestore.co/*' => Http::response($bodyAppleStore, 404),
         ]);
