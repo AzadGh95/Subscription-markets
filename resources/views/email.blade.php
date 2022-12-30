@@ -18,7 +18,7 @@
 <body>
     <div>
         Hi there,
-        {{ $text }}
+        The subscription status from application with id={{ $app_id }} , changed from ‘active’ to ‘expired’.       
     </div>
 </body>
 

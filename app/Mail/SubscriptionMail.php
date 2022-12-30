@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -32,7 +33,8 @@ class SubscriptionMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Subscription Alert',
+            from: new Address('monitoring@parspack.com', 'ParsPack'),
+            subject: 'Subscription Warning',
         );
     }
 
@@ -46,7 +48,7 @@ class SubscriptionMail extends Mailable
         return new Content(
             view: 'email',
             with: [
-                'text' => 'The subscription status from application with id='.$this->devappId.', changed from ‘active’ to ‘expired’',
+                'app_id' => $this->devappId,
             ]
         );
     }

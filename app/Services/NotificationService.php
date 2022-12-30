@@ -18,7 +18,7 @@ class NotificationService
      */
     public function __construct($devappId, $user)
     {
-        $this->devapp = $devappId;
+        $this->devappId = $devappId;
         $this->user = $user;
     }
 
