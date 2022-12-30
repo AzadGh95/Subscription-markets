@@ -32,9 +32,9 @@ class CheckSubscription extends Command
     {
         $devapps = Devapp::all();
         foreach ($devapps as $item) {
-            $api = match ($this->platform) {
-                PlatformEnum::ANDROID => route('mock.googleplay.show', ['app_id' => $item->id]),
-                PlatformEnum::IOS => route('mock.applestore.show', ['app_id' => $item->id]),
+            $api = match ($item->platform) {
+                PlatformEnum::ANDROID->value => route('mock.googleplay.show', ['app_id' => $item->id]),
+                PlatformEnum::IOS->value => route('mock.applestore.show', ['app_id' => $item->id]),
             };
             (new SubscriptionService())->Check($api, $item->platform, $item->id);
         }
