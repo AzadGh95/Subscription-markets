@@ -44,7 +44,10 @@ class SubscriptionMail extends Mailable
     public function content()
     {
         return new Content(
-            'The subscription status from application with id='.$this->devappId.', changed from ‘active’ to ‘expired’'
+            view: 'email',
+            with: [
+                'text' => 'The subscription status from application with id='.$this->devappId.', changed from ‘active’ to ‘expired’',
+            ]
         );
     }
 

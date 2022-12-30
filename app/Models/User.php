@@ -34,7 +34,6 @@ class User extends Model
 
     public const ACTIVE = 'active';
 
-
     /**
      * Scope a query to only include active users.
      *
@@ -47,9 +46,9 @@ class User extends Model
     }
 
     protected $casts = [
-        'active' => 'boolean'
+        'active' => 'boolean',
     ];
-    
+
     protected $fillable = [
         'name',
         'email',

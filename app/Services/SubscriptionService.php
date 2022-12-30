@@ -16,7 +16,9 @@ class SubscriptionService
 
         return [
             'status' => $response->getStatusCode(),
-            'body' => $response->getBody(),
+            // 'body' => (string) $response->getBody(),
+            'body' => json_decode($response->getBody(), true),
+
         ];
     }
 

@@ -17,7 +17,7 @@ class StatisticService
                 $count++;
                 if ($statistic->first()->last_status == 'active') {
                     foreach (User::active()->get() as $admin) {
-                        (new NotificationService($this->devappId, $admin))->Email();
+                        (new NotificationService($devappId, $admin))->Email();
                     }
                 }
             }

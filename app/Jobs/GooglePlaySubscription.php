@@ -24,8 +24,6 @@ class GooglePlaySubscription implements ShouldQueue
      * @return void
      */
     public function __construct(
-        protected SubscriptionService $subscriptionService,
-        protected StatisticService $statisticService,
         $api,
         $devappId
     ) {
@@ -40,11 +38,10 @@ class GooglePlaySubscription implements ShouldQueue
      */
     public function handle()
     {
-        $result = $this->subscriptionService
-            ->GuzzleApi($this->api);
+        $result = (new SubscriptionService())->GuzzleApi($this->api);
         if ($result['status'] == 200) {
             $subscriptionStatus = $result['body'];
-            $this->statisticService->addStatistic(
+            (new StatisticService())->addStatistic(
                 $this->devappId,
                 $subscriptionStatus['status']
             );
