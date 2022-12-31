@@ -6,5 +6,5 @@ enum SubscriptionStatusEnum: string
 {
     case PENDING = 'pending';
     case ACCEPT = 'accept';
-    case REJECT = 'reject';
+    case EXPIRED = 'expired';
 }

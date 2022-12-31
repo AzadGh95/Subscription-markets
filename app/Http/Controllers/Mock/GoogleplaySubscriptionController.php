@@ -14,7 +14,7 @@ class GoogleplaySubscriptionController extends Controller
      */
     public function show($id = 1)
     {
-        $array = ['active', 'expired'];
+        $array = ['pending', 'active', 'expired'];
 
         return [
             'status' => $array[rand(0, 1)],

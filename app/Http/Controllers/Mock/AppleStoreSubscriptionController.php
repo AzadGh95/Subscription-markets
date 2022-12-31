@@ -14,7 +14,7 @@ class AppleStoreSubscriptionController extends Controller
      */
     public function show($id = 1)
     {
-        $array = ['active', 'expired'];
+        $array = ['pending', 'active', 'expired'];
 
         return [
             'subscription' => $array[rand(0, 1)],
